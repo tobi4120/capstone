@@ -1,11 +1,33 @@
 from django.shortcuts import render
 from .models import *
 
-from rest_framework import viewsets, permissions, generics
+from rest_framework import views, permissions, generics
 from rest_framework.response import Response
 from .serializers import *
 
 from knox.models import AuthToken
+
+import requests
+from bs4 import BeautifulSoup
+from django.http import HttpResponse
+import json
+import os
+
+# JobData API
+class JobPostsView(views.APIView):
+
+    def get(self, request):
+        settings_dir = os.path.dirname(__file__)
+        PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+        FOLDER = os.path.join(PROJECT_ROOT, 'backend/')
+        FILE = FOLDER + 'sample_data.json'
+
+        f = open(FILE)
+        response = json.load(f)
+
+        yourdata = response['data']
+        results = JobPostsSerializer(yourdata, many=True).data
+        return Response(results)
 
 # Register API 
 class RegisterAPI(generics.GenericAPIView):

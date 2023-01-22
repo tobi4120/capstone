@@ -31,3 +31,25 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+
+class JobPostsSerializer(serializers.Serializer):
+    employer_name = serializers.CharField()
+    employer_logo = serializers.CharField()
+    employer_website = serializers.CharField()
+    job_publisher = serializers.CharField()
+    job_id = serializers.CharField()
+    job_employment_type = serializers.CharField()
+    job_title = serializers.CharField()
+    job_apply_link = serializers.CharField()
+    job_description = serializers.CharField()
+    job_is_remote = serializers.BooleanField()
+    job_posted_at_datetime_utc = serializers.CharField()
+    job_city = serializers.CharField()
+    job_state = serializers.CharField()
+    job_country = serializers.CharField()
+    job_required_experience = serializers.DictField()
+    job_required_skills = serializers.ListField()
+    job_required_education = serializers.DictField()
+    job_min_salary = serializers.IntegerField()
+    job_max_salary = serializers.IntegerField()
+    job_highlights = serializers.DictField()
