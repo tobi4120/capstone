@@ -17,6 +17,25 @@ import os
 class JobPostsView(views.APIView):
 
     def get(self, request):
+        # API docs: https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
+
+        # Get params
+        # query = self.request.query_params.get('query')
+        # job_requirements = self.request.query_params.get('job_requirements')
+
+        # Call API
+        # url = "https://jsearch.p.rapidapi.com/search"
+
+        # querystring = {"query":"Python developer in Texas, USA","num_pages":"1"}
+
+        # headers = {
+        #     "X-RapidAPI-Key": "d8dbd3e067msh204f5fbb69e2009p1ee77bjsn8b7ba668f743",
+        #     "X-RapidAPI-Host": "jsearch.p.rapidapi.com"
+        # }
+
+        # response = requests.request("GET", url, headers=headers, params=querystring)
+
+        # Loading data from dummy file (need to remove later)
         settings_dir = os.path.dirname(__file__)
         PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
         FOLDER = os.path.join(PROJECT_ROOT, 'backend/')
@@ -24,9 +43,9 @@ class JobPostsView(views.APIView):
 
         f = open(FILE)
         response = json.load(f)
-
-        yourdata = response['data']
-        results = JobPostsSerializer(yourdata, many=True).data
+        
+        data = response['data']
+        results = JobPostsSerializer(data, many=True).data
         return Response(results)
 
 # Register API 
