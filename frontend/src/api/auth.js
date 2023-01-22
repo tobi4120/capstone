@@ -1,14 +1,4 @@
 import axios from 'axios';
-import { getCookie } from './cookie'
-require("regenerator-runtime");
-
-// Configure axios to accept the CSRF Token
-const headers = {
-    'X-CSRFToken': getCookie('csrftoken') || ""
-}
-
-axios.defaults.xsrfCookieName = 'csrftoken'
-axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
 
 const backend_url = process.env.REACT_APP_BACKEND_URL
 
@@ -18,10 +8,45 @@ export const verify_login = async (email, password) => {
         response = await axios.post(`${backend_url}/loginAPI`, {
             email: email,
             password: password,
-        }, { headers: headers })
-    }
-    catch(err) {
+        })
+    } catch(err) {
         response = err.response
     }
     return response;
+}
+
+export const verify_token = async () => {
+    let response = "";
+    try {
+        response = await axios.get(`${backend_url}/userAPI`, {headers: {
+            Authorization: `Token ${localStorage.getItem('token')}`
+        }})
+    } catch(err) {
+        response = err.response
+    }
+    return response;
+}
+
+export const create_account = async (user) => {
+    let response = "";
+    try {
+        response = await axios.post(`${backend_url}/registerAPI`, {
+            first_name: user.firstName,
+            last_name: user.lastName,
+            email: user.email,
+            password: user.password,
+        })
+    } catch (err) {
+        response = err.response
+    }
+    return response;
+}
+
+export const delete_token_fromDB = async () => {
+    try {
+        await axios.post(`${backend_url}/logoutAPI`, {
+        }, {headers: {
+            Authorization: `Token ${localStorage.getItem('token')}`
+        }});
+    } catch {}
 }

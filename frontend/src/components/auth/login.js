@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
-import { verify_login } from "../../api/auth";
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { verify_login, delete_token_fromDB } from "../../api/auth";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            delete_token_fromDB();
+            localStorage.removeItem('token');
+        }
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,7 +33,6 @@ export default function Login() {
             setEmail("");
             setPassword("");
         }
-        
     }   
 
     return (
@@ -35,16 +43,19 @@ export default function Login() {
                     type="email" 
                     placeholder="Email"
                     onChange={e => setEmail(e.target.value)}
-                    value={email} />
+                    value={email}
+                    required />
 
                 <input 
                     type="password" 
                     placeholder="Password"
                     onChange={e => setPassword(e.target.value)}
-                    value={password} />
+                    value={password}
+                    required />
 
                 <input type="submit" value="Login" />
             </form>
+            <p>Don't have an account? <a href="/register">Register</a></p>
         </div>
     )
 }
