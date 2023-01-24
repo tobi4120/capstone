@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { verify_token, delete_token_fromDB } from '../../api/auth';
 import Loader from './loader';
+import { Outlet } from 'react-router-dom';
 
 export default function Home() {
     const [user, setUser] = useState();
@@ -37,6 +38,7 @@ export default function Home() {
         <div>
             Welcome, {user.first_name}
             <button onClick={logout}>Logout</button>
+            <Outlet />
         </div>
     )
 }
