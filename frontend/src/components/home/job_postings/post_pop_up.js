@@ -30,6 +30,20 @@ export default function PostPopUp({ post }) {
         if (dayDiff > 0) return `${dayDiff} day${dayDiff > 1? "s": ""} ago`
     }
 
+    const findKeyWords = () => {
+        // console.log(post.job_description)
+        // console.log(post.job_highlights.Qualifications)
+        let job_description = post.job_description;
+
+        for (const keyphrase of post.job_highlights.Qualifications) {
+            const start = job_description.indexOf(keyphrase);
+            const end = start + keyphrase.length;
+
+            job_description = job_description.slice(0, start) + "<p class='keyphrase'>" + job_description.slice(start, end) + "</p>" + job_description.slice(end, job_description.length)
+        }
+        return job_description;
+    }
+
     return (
         <div>
             {/* Basic info */}
@@ -43,7 +57,7 @@ export default function PostPopUp({ post }) {
             {/* Job Description */}
             <div className='job_description'>
                 <h4>About the job</h4>
-                <p>{post.job_description}</p>
+                <div dangerouslySetInnerHTML={{__html: findKeyWords(post.job_description)}} />
             </div>
 
             {/* Experience and education */}
