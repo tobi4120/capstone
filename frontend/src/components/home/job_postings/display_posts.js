@@ -16,9 +16,10 @@ export default function DisplayPosts(props) {
         setLoading(true);
         if (props.searchForJob) {
             const response = await getPosts(props.query, props.filters);
-
+            
             if (response.status && response.status === 200) {
                 setJobPosts(response.data);
+                console.log(response.data)
             } else {
                 setError(true);
             }

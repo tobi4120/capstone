@@ -4,9 +4,10 @@ from rest_framework import routers
 from knox import views as knox_views
 
 router = routers.DefaultRouter()
+router.register(r'jobs-applied-to', views.JobsAppliedToViewSet)
 
 urlpatterns = [
-    path("api/", include(router.urls)),
+    path("", include(router.urls)),
     path("userAPI", views.UserAPI.as_view()),
     path("registerAPI", views.RegisterAPI.as_view()),
     path("loginAPI", views.LoginAPI.as_view()),

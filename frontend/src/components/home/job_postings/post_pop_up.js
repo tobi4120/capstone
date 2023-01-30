@@ -1,4 +1,5 @@
 import React from 'react'
+import { markJob } from "../../../api/job_postings";
 
 export default function PostPopUp({ post }) {
     const getEducation = (education_obj) => {
@@ -31,8 +32,6 @@ export default function PostPopUp({ post }) {
     }
 
     const findKeyWords = () => {
-        // console.log(post.job_description)
-        // console.log(post.job_highlights.Qualifications)
         let job_description = post.job_description;
 
         for (const keyphrase of post.job_highlights.Qualifications) {
@@ -42,6 +41,19 @@ export default function PostPopUp({ post }) {
             job_description = job_description.slice(0, start) + "<p class='keyphrase'>" + job_description.slice(start, end) + "</p>" + job_description.slice(end, job_description.length)
         }
         return job_description;
+    }
+
+    const markJobPostRequest = async () => {
+        const response = await markJob(post);
+
+        if (response.status && response.status === 201) {
+            alert("Job successfully saved")
+        } else if (response.data && response.data.posting_id && response.data.posting_id[0] === "jobs applied to with this posting id already exists.") {
+            alert("Error: Job has already been marked")
+        } else {
+            console.log(response)
+            alert("Error: Job could not be saved")
+        }
     }
 
     return (
@@ -86,8 +98,11 @@ export default function PostPopUp({ post }) {
                 </ul>
             </div>
 
-            {/* Apply go job button */}
+            {/* Apply to job button */}
             <a href={post.job_apply_link}>Apply for this position</a>
+
+            {/* Mark job as applied to */}
+            <button onClick={markJobPostRequest}>Mark job as applied to</button>
         </div>
     )
 }

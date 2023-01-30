@@ -65,3 +65,11 @@ class User(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+
+class JobsAppliedTo(models.Model):
+    posting_id = models.CharField(unique=True, max_length=500)
+    employer_logo = models.CharField(max_length=500, null=True, blank=True)
+    employer_name = models.CharField(max_length=500)
+    job_apply_link = models.CharField(max_length=500)
+    job_title = models.CharField(max_length=500)
+    applied_on = models.DateTimeField(auto_now_add=True)

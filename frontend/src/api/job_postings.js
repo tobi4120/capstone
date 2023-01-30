@@ -21,3 +21,21 @@ export const getPosts = async (query, filters) => {
     
     return response;
 }
+
+export const markJob = async (post) => {
+    let response = "";
+
+    try {
+        response = await axios.post(`${backend_url}/jobs-applied-to/`, { 
+            posting_id: post.job_id,
+            employer_logo: post.employer_logo,
+            employer_name: post.employer_name,
+            job_apply_link: post.job_apply_link,
+            job_title: post.job_title
+        });
+    } catch (err) {
+        response = err.response
+    }
+    
+    return response;
+}

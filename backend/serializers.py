@@ -53,3 +53,9 @@ class JobPostsSerializer(serializers.Serializer):
     job_min_salary = serializers.IntegerField()
     job_max_salary = serializers.IntegerField()
     job_highlights = serializers.DictField()
+
+class JobsAppliedToSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = JobsAppliedTo
+        fields = '__all__'

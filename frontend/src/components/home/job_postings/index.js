@@ -16,7 +16,7 @@ const JobPostings = (props) => {
         industry: []
     })
     const [query, setQuery] = useState("Python");
-    const [searchForJob, setSearchForJob] = useState(false);
+    const [searchForJob, setSearchForJob] = useState(true);
 
     const handleFilterChange = (e) => {
         if (e.target.name === "datePosted" || e.target.name === "remoteJobsOnly") {

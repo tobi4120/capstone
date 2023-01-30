@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 
-from rest_framework import views, permissions, generics
+from rest_framework import views, viewsets, permissions, generics
 from rest_framework.response import Response
 from .serializers import *
 
@@ -92,3 +92,8 @@ class UserAPI(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+# Jobs Applied To API
+class JobsAppliedToViewSet(viewsets.ModelViewSet):
+    queryset = JobsAppliedTo.objects.all()
+    serializer_class = JobsAppliedToSerializer
