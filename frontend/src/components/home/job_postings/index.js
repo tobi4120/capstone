@@ -16,6 +16,7 @@ const JobPostings = (props) => {
         industry: []
     })
     const [query, setQuery] = useState("");
+    const [searchForJob, setSearchForJob] = useState(false);
 
     const handleFilterChange = (e) => {
         if (e.target.name === "datePosted" || e.target.name === "remoteJobsOnly") {
@@ -36,11 +37,17 @@ const JobPostings = (props) => {
             <h3>Job Postings</h3>
             <SearchBar
                 query={query}
-                setQuery={setQuery} />
+                setQuery={setQuery}
+                searchForJob={searchForJob}
+                setSearchForJob={setSearchForJob} />
             <Filter
                 filters={filters} 
                 handleFilterChange={handleFilterChange}  />
-            <DisplayPosts />
+            <DisplayPosts
+                query={query}
+                filters={filters}
+                searchForJob={searchForJob}
+                setSearchForJob={setSearchForJob} />
         </div>
     )
 }

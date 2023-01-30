@@ -20,20 +20,26 @@ class JobPostsView(views.APIView):
         # API docs: https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
 
         # Get params
-        # query = self.request.query_params.get('query')
-        # job_requirements = self.request.query_params.get('job_requirements')
+        params = {
+            'query': self.request.query_params.get('query'),
+            'date_posted': self.request.query_params.get('date_posted'),
+            'remote_jobs_only': self.request.query_params.get('remote_jobs_only'),
+            'employment_types': self.request.query_params.get('employment_types'),
+            'job_requirements': self.request.query_params.get('job_requirements'),
+            'categories': self.request.query_params.get('categories'),
+            'company_types': self.request.query_params.get('company_types')
+        }
 
         # Call API
-        # url = "https://jsearch.p.rapidapi.com/search"
+        url = "https://jsearch.p.rapidapi.com/search"
 
-        # querystring = {"query":"Python developer in Texas, USA","num_pages":"1"}
+        headers = {
+            "X-RapidAPI-Key": "d8dbd3e067msh204f5fbb69e2009p1ee77bjsn8b7ba668f743",
+            "X-RapidAPI-Host": "jsearch.p.rapidapi.com"
+        }
 
-        # headers = {
-        #     "X-RapidAPI-Key": "d8dbd3e067msh204f5fbb69e2009p1ee77bjsn8b7ba668f743",
-        #     "X-RapidAPI-Host": "jsearch.p.rapidapi.com"
-        # }
-
-        # response = requests.request("GET", url, headers=headers, params=querystring)
+        # response = requests.request("GET", url, headers=headers, params=params)
+        # response = response.json()
 
         # Loading data from dummy file (need to remove later)
         settings_dir = os.path.dirname(__file__)
@@ -43,10 +49,13 @@ class JobPostsView(views.APIView):
 
         f = open(FILE)
         response = json.load(f)
-        
-        data = response['data']
-        results = JobPostsSerializer(data, many=True).data
-        return Response(results)
+
+        if response['data']:
+            data = response['data']
+            results = JobPostsSerializer(data, many=True).data
+            return Response(results)
+
+        return None
 
 # Register API 
 class RegisterAPI(generics.GenericAPIView):
