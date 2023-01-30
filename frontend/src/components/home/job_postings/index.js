@@ -15,7 +15,7 @@ const JobPostings = (props) => {
         jobFunction: [],
         industry: []
     })
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState("Python");
     const [searchForJob, setSearchForJob] = useState(false);
 
     const handleFilterChange = (e) => {
@@ -33,21 +33,25 @@ const JobPostings = (props) => {
     }   
 
     return (
-        <div>
-            <h3>Job Postings</h3>
-            <SearchBar
-                query={query}
-                setQuery={setQuery}
-                searchForJob={searchForJob}
-                setSearchForJob={setSearchForJob} />
-            <Filter
-                filters={filters} 
-                handleFilterChange={handleFilterChange}  />
-            <DisplayPosts
-                query={query}
-                filters={filters}
-                searchForJob={searchForJob}
-                setSearchForJob={setSearchForJob} />
+        <div className="job_postings_page">
+            <div className="filter">
+                <Filter
+                    filters={filters} 
+                    handleFilterChange={handleFilterChange}  />
+            </div>
+
+            <div className="search_and_display_jobs">
+                <SearchBar
+                    query={query}
+                    setQuery={setQuery}
+                    searchForJob={searchForJob}
+                    setSearchForJob={setSearchForJob} />
+                <DisplayPosts
+                    query={query}
+                    filters={filters}
+                    searchForJob={searchForJob}
+                    setSearchForJob={setSearchForJob} />
+            </div>
         </div>
     )
 }

@@ -28,14 +28,14 @@ export default function DisplayPosts(props) {
         setLoading(false);
     }
 
-    if (loading) return <Loader />
+    if (loading) return <div className='posts'><Loader /></div>
 
-    if (error) return <div>Failed to load job posts. Please refresh the page and try again.</div>
+    if (error) return <div className='posts'>Failed to load job posts. Please refresh the page and try again.</div>
 
-    if (jobPosts.length === 0) return <div>No postings shown. Search for a job posting above!</div>
+    if (jobPosts.length === 0) return <div className='posts'>No postings shown. Search for a job posting above!</div>
 
     return (
-        <div>
+        <div className='posts'>
             {jobPosts.map(post => {
                 return <Post key={post.job_id} post={post} />
             })}

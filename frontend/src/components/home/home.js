@@ -4,6 +4,7 @@ import { verify_token, delete_token_fromDB } from '../../api/auth';
 import Loader from './loader';
 import { Outlet } from 'react-router-dom';
 import { UserContext } from '../../contexts';
+import "../../styles/home.css";
 
 export default function Home() {
     const [user, setUser] = useState();

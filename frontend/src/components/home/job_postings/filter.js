@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Filter(props) {
     return (
-        <div>
+        <div className='filter-content'>
             <h3>Filters</h3>
 
             <form onChange={props.handleFilterChange}>

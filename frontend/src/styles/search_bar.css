@@ -1,0 +1,10 @@
+.search-job {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-bar {
+    flex: 1;
+    display: block;
+}

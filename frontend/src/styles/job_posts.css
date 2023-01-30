@@ -1,5 +1,80 @@
-p {
-    display: inline;
+.job_postings_page {
+    display: flex;
+    padding: 25px 80px;
+    overflow: hidden;
+}
+
+.filter {
+    flex: 0 0 27%;
+}
+
+.search_and_display_jobs {
+    flex: 1;
+}
+
+.filter-content, .posts, .search-job {
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid rgb(231,231,231);
+    padding: 20px;
+}
+
+.filter-content {
+    width: 280px;
+    height: 568px;
+    overflow: scroll;
+}
+
+.posts {
+    height: 490px;
+    overflow: scroll;
+    margin-top: 15px;
+}
+
+.post:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.post {
+    background-color: rgb(246,246,246);
+    border: 1px solid rgb(231,231,231);
+    border-radius: 7px;
+    padding: 25px;
+}
+
+.post-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    border-radius: 7px;
+    margin-right: 15px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-job-title {
+    margin-bottom: 5px;
+}
+
+.post-job-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    margin: 15px 0px;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    margin-left: -7px;
+}
+
+.salary {
+    margin-top: 5px;
 }
 
 .keyphrase {
