@@ -22,11 +22,24 @@ export const getPosts = async (query, filters) => {
     return response;
 }
 
-export const markJob = async (post) => {
+export const getJobsAppliedTo = async () => {
+    let response = "";
+
+    try {
+        response = await axios.get(`${backend_url}/jobs-applied-to/`);
+    } catch (err) {
+        response = err.response
+    }
+    
+    return response;
+}
+
+export const markJob = async (post, user) => {
     let response = "";
 
     try {
         response = await axios.post(`${backend_url}/jobs-applied-to/`, { 
+            user: user.id,
             posting_id: post.job_id,
             employer_logo: post.employer_logo,
             employer_name: post.employer_name,

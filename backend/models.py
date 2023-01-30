@@ -67,6 +67,7 @@ class User(AbstractBaseUser):
         return True
 
 class JobsAppliedTo(models.Model):
+    user = models.ForeignKey("User", on_delete=models.CASCADE)
     posting_id = models.CharField(unique=True, max_length=500)
     employer_logo = models.CharField(max_length=500, null=True, blank=True)
     employer_name = models.CharField(max_length=500)

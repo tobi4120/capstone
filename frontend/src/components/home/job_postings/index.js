@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../../contexts";
+import React, { useState } from "react";
 import SearchBar from "./search_bar";
 import DisplayPosts from "./display_posts";
 import '../../../styles/job_posts.css';
 import Filter from "./filter";
 
 const JobPostings = (props) => {
-    const user = useContext(UserContext);
     const [filters, setFilters] = useState({
         datePosted: "all",
         remoteJobsOnly: false,

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from "../../../contexts";
 import { markJob } from "../../../api/job_postings";
 
 export default function PostPopUp({ post }) {
+    const user = useContext(UserContext);
     const getEducation = (education_obj) => {
         if (education_obj.professional_certification) return "Professional Certification"
         if (education_obj.high_school) return "High School"
@@ -44,7 +46,7 @@ export default function PostPopUp({ post }) {
     }
 
     const markJobPostRequest = async () => {
-        const response = await markJob(post);
+        const response = await markJob(post, user);
 
         if (response.status && response.status === 201) {
             alert("Job successfully saved")
