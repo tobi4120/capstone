@@ -45,7 +45,7 @@ export default function Post({ post }) {
                 </div>
 
                 {/* Show popup */}
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#J${post.job_id.substring(0,post.job_id.length-2)}Modal`}>
+                <button type="button" className="btn btn-primary show-more-btn" data-bs-toggle="modal" data-bs-target={`#J${post.job_id.substring(0,post.job_id.length-2)}Modal`}>
                     Show more info
                 </button>
             </div>

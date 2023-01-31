@@ -161,3 +161,7 @@
     display: flex;
     align-items: center;
 }
+
+.show-more-btn {
+    font-size: 0.9rem;
+}
