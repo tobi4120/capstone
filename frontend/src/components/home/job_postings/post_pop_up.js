@@ -65,7 +65,7 @@ export default function PostPopUp({ post }) {
                 {/* Header */}
                 <div className="modal-header">
                     <div className='basic-info' style={{ "display": "flex", "alignItems": "center" }}>
-                        <img className='modal-emplouer-logo' src={post.employer_logo} />
+                        {post.employer_logo && <img className='modal-emplouer-logo' src={post.employer_logo} />}
 
                         <div>
                             <h3 className="modal-title fs-5" >{post.job_title}</h3>
