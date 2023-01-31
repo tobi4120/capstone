@@ -15,10 +15,11 @@ const SearchBar = (props) => {
                 value={props.query}
                 onChange={(e) => props.setQuery(e.target.value)}
                 required
-                className="search-bar" />
+                className="search-bar form-control" />
             <input 
                 type="submit"
-                value="Find" />
+                value="Find"
+                class="btn btn-primary" />
         </form>
     )
 }

@@ -59,52 +59,75 @@ export default function PostPopUp({ post }) {
     }
 
     return (
-        <div>
-            {/* Basic info */}
-            <div className='basic_info'>
-                <h3>{post.job_title}</h3>
-                <p>{post.employer_name}</p>
-                <p>{post.job_city}, {post.job_state}, {post.job_country}</p>
-                <p>{timePassed(post.job_posted_at_datetime_utc)}</p>
-            </div>
-            
-            {/* Job Description */}
-            <div className='job_description'>
-                <h4>About the job</h4>
-                <div dangerouslySetInnerHTML={{__html: findKeyWords(post.job_description)}} />
-            </div>
+        <div className="modal-dialog">
+            <div className="modal-content">
 
-            {/* Experience and education */}
-            {(getEducation(post.job_required_education) || post.job_required_experience.required_experience_in_months != null) &&
-                <div className='experience_and_education'>
-                    <h4>Required Experience and Education</h4>
-                    <ul>
-                        {getEducation(post.job_required_education) && 
-                            <li>{getEducation(post.job_required_education)}</li>
-                        }
+                {/* Header */}
+                <div className="modal-header">
+                    <div className='basic-info' style={{ "display": "flex", "alignItems": "center" }}>
+                        <img className='modal-emplouer-logo' src={post.employer_logo} />
 
-                        {post.job_required_experience.required_experience_in_months &&
-                            <li>{getYearOfExp(post.job_required_experience.required_experience_in_months)}</li>
-                        }
-                    </ul>
+                        <div>
+                            <h3 className="modal-title fs-5" >{post.job_title}</h3>
+                            <div className='modal-sub-header'>
+                                <p>{post.employer_name}</p>
+                                <span className='middle-dot'>&#183;</span>
+                                <p>{post.job_city}, {post.job_state}, {post.job_country}</p>
+                                <span className='middle-dot'>&#183;</span>
+                                <p>{timePassed(post.job_posted_at_datetime_utc)}</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            }
 
-            {/* Additional info */}
-            <div className='additional_info'>
-                <h4>Additonal info</h4>
-                <ul>
-                    <li>Employment type: {post.job_employment_type}</li>
-                    {post.job_is_remote && <l1>Remote</l1>}
-                    <li>Source: {post.job_publisher}</li>
-                </ul>
+                {/* Body */}
+                <div className="modal-body">
+                    <div className='job_description'>
+
+                        {/* Job Description */}
+                        <h4 className='modal-body-header'>About the job</h4>
+                        <div className='modal-body-desc modal-text' dangerouslySetInnerHTML={{__html: findKeyWords(post.job_description)}} />
+
+                        {/* Experience and education */}
+                        {(getEducation(post.job_required_education) || post.job_required_experience.required_experience_in_months != null) &&
+                            <div className='experience_and_education'>
+                                <h4 className='modal-body-header'>Required Experience and Education</h4>
+                                <ul>
+                                    {getEducation(post.job_required_education) && 
+                                        <li className='modal-text'>{getEducation(post.job_required_education)}</li>
+                                    }
+
+                                    {post.job_required_experience.required_experience_in_months &&
+                                        <li className='modal-text'>{getYearOfExp(post.job_required_experience.required_experience_in_months)}</li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+
+                        {/* Additional info */}
+                        <div className='additional_info'>
+                            <h4 className='modal-body-header'>Additonal info</h4>
+                            <ul>
+                                <li className='modal-text'>Employment type: {post.job_employment_type}</li>
+                                {post.job_is_remote && <l1>Remote</l1>}
+                                <li className='modal-text'>Source: {post.job_publisher}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Footer */}
+                <div className="modal-footer">
+                    {/* Mark job as applied to */}
+                    <button type="button" className="btn btn-secondary" onClick={markJobPostRequest}>Mark job as applied to</button>
+
+                    {/* Apply to job button */}
+                    <a className="btn btn-primary" href={post.job_apply_link}>Apply for this position</a>
+                </div>
             </div>
-
-            {/* Apply to job button */}
-            <a href={post.job_apply_link}>Apply for this position</a>
-
-            {/* Mark job as applied to */}
-            <button onClick={markJobPostRequest}>Mark job as applied to</button>
         </div>
     )
 }
