@@ -40,16 +40,19 @@ export default function JobTracker(props) {
     return (
         <div>
             Job Tracker for {user.first_name}
-            <table>
-            <tr>
-                <th>Logo</th>
-                <th>Employer</th>
-                <th>Job Title</th>
-                <th>Location</th>
-                <th>Source</th>
-                <th>Interview Recieved</th>
-                <th>Offer Recieved</th>
-            </tr>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Logo</th>
+                        <th scope="col">Employer</th>
+                        <th scope="col">Job Title</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Interview Recieved</th>
+                        <th scope="col">Offer Recieved</th>
+                        <th scope="col">Remove Job</th>
+                    </tr>
+                </thead>
 
                 {jobsAppledTo.map(job => {
                     return (
