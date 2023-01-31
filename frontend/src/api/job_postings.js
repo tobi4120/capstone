@@ -36,16 +36,11 @@ export const getJobsAppliedTo = async () => {
 
 export const markJob = async (post, user) => {
     let response = "";
+    let body = post
+    body['user'] = user.id
 
     try {
-        response = await axios.post(`${backend_url}/jobs-applied-to/`, { 
-            user: user.id,
-            posting_id: post.job_id,
-            employer_logo: post.employer_logo,
-            employer_name: post.employer_name,
-            job_apply_link: post.job_apply_link,
-            job_title: post.job_title
-        });
+        response = await axios.post(`${backend_url}/jobs-applied-to/`, body);
     } catch (err) {
         response = err.response
     }

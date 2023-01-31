@@ -50,7 +50,7 @@ export default function PostPopUp({ post }) {
 
         if (response.status && response.status === 201) {
             alert("Job successfully saved")
-        } else if (response.data && response.data.posting_id && response.data.posting_id[0] === "jobs applied to with this posting id already exists.") {
+        } else if (response.data && response.data.job_id && response.data.job_id[0] === "jobs applied to with this posting id already exists.") {
             alert("Error: Job has already been marked")
         } else {
             console.log(response)
