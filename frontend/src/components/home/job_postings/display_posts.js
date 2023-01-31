@@ -37,9 +37,11 @@ export default function DisplayPosts(props) {
 
     return (
         <div className='posts'>
-            {jobPosts.map(post => {
-                return <Post key={post.job_id} post={post} />
-            })}
+            <div className='posts-data'>
+                {jobPosts.map(post => {
+                    return <Post key={post.job_id} post={post} />
+                })}
+            </div>
         </div>
     )
 }

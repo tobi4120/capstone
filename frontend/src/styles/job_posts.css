@@ -1,15 +1,31 @@
 .job_postings_page {
     display: flex;
     padding: 25px 80px;
+    gap: 50px;
+    overflow: hidden;
+    height: 90%;
+}
+
+#root {
+    height: 100vh;
     overflow: hidden;
 }
 
 .filter {
     flex: 0 0 27%;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .search_and_display_jobs {
     flex: 1;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .filter-content, .posts, .search-job {
@@ -20,15 +36,15 @@
 }
 
 .filter-content {
-    width: 280px;
-    height: 568px;
     overflow: scroll;
+    flex: 1;
 }
 
 .posts {
-    height: 490px;
+    height: 100%;
     overflow: scroll;
     margin-top: 15px;
+    flex: 1;
 }
 
 .post:not(:last-child) {
