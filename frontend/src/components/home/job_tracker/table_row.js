@@ -20,12 +20,12 @@ const Table_row = ({job}) => {
     return(
         <tbody>
             <tr key={job.job_id}>
-                <td scope="row"><img src={job.employer_logo} style={{"maxWidth":100}}></img></td>
-                <td>{job.employer_name}</td>
-                <td>{job.job_title}</td>
-                <td>{job.job_city}</td>
-                <td>{job.job_publisher}</td>
-                <td>
+                <td scope="row" class="align-middle"><img src={job.employer_logo} style={{"maxWidth":100}}></img></td>
+                <td class="align-middle">{job.employer_name}</td>
+                <td class="align-middle">{job.job_title}</td>
+                <td class="align-middle">{job.job_city}</td>
+                <td class="align-middle">{job.job_publisher}</td>
+                <td class="align-middle">
                     <label>
                         <input type="checkbox" checked={interview} onChange={handleChangeInterview}/>
                         Interview Recieved
@@ -34,7 +34,7 @@ const Table_row = ({job}) => {
                     {/* <p>Is "Interview" checked? {interview.toString()}</p> */}
                 </td>
 
-                <td>
+                <td class="align-middle">
                     <label>
                         <input type="checkbox" checked={offer} onChange={handleChangeOffer}/>
                         Offer Recieved
@@ -43,8 +43,8 @@ const Table_row = ({job}) => {
                     {/* <p>Is "Offer" checked? {offer.toString()}</p> */}
                 </td>
 
-                <td>
-                    <button>Remove</button>
+                <td class="align-middle">
+                    <button type="button" class="btn btn-dark">Remove</button>
                 </td>
             </tr>
         </tbody>
