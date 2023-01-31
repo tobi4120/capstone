@@ -63,8 +63,14 @@ export default function JobTracker(props) {
             </table>
 
             <h3>&nbsp;&nbsp;Job Search Statistics for {user.first_name}</h3>
+            <h4>&nbsp;&nbsp;&nbsp;</h4>
 
-            
+            <table class="table table-hover text-center">
+                <tr>Number of Job Applied To:</tr>
+                <tr>Interview Conversion Rate:</tr>
+                <tr>Offer Conversion Rate:</tr>
+            </table>
+
         </div>
     )
 }
