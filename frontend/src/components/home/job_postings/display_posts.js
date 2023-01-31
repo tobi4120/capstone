@@ -33,7 +33,10 @@ export default function DisplayPosts(props) {
 
     if (error) return <div className='posts'>Failed to load job posts. Please refresh the page and try again.</div>
 
-    if (jobPosts.length === 0) return <div className='posts'>No postings shown. Search for a job posting above!</div>
+    if (jobPosts.length === 0) return <div className='posts'>
+        No postings shown. Search for a job posting above!
+        If you've already searched for a job and don't see any results, try a different query.
+    </div>
 
     return (
         <div className='posts'>

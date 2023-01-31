@@ -37,7 +37,7 @@ export default function Post({ post }) {
                 
                 <div style={{ "flex": "1" }}>
                     {post.job_min_salary && post.job_max_salary &&
-                        <div style={{ "display": "flex", "alignItems": "center" }}s>
+                        <div style={{ "display": "flex", "alignItems": "center" }}>
                             <span className='middle-dot' style={{ "color": "#5d6066" }}>&#183;</span>
                             <p className='salary'>${addCommas(post.job_min_salary)} - ${addCommas(post.job_max_salary)}</p>
                         </div>

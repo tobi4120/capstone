@@ -2,6 +2,20 @@ import React from 'react'
 import "../../../styles/filter.css"
 
 export default function Filter(props) {
+    const applyFilters = () => {
+        if (!props.query || props.query === '') {
+            alert("Error: Search bar cannot be blank");
+            return
+        }
+
+        if (props.searchForJob) {
+            alert("Already searching for jobs, please wait for results");
+            return
+        }
+
+        props.setSearchForJob(true);
+    }
+
     return (
         <div className='filter-content'>
             <h3 className='filter-header'>Filters</h3>
@@ -329,7 +343,9 @@ export default function Filter(props) {
                         className="form-checkbox-input form-check-input" />
                     Health Care
                 </label>
-            </form>            
+            </form> 
+
+            <button className='btn btn-primary btn-filter' onClick={applyFilters}>Apply filters</button>           
         </div>
     )
 }

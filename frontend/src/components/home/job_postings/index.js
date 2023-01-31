@@ -13,8 +13,8 @@ const JobPostings = (props) => {
         jobFunction: [],
         industry: []
     })
-    const [query, setQuery] = useState("Python");
-    const [searchForJob, setSearchForJob] = useState(true);
+    const [query, setQuery] = useState("");
+    const [searchForJob, setSearchForJob] = useState(false);
 
     const handleFilterChange = (e) => {
         if (e.target.name === "datePosted" || e.target.name === "remoteJobsOnly") {
@@ -35,7 +35,10 @@ const JobPostings = (props) => {
             <div className="filter">
                 <Filter
                     filters={filters} 
-                    handleFilterChange={handleFilterChange}  />
+                    handleFilterChange={handleFilterChange}
+                    query={query}
+                    searchForJob={searchForJob}
+                    setSearchForJob={setSearchForJob} />
             </div>
 
             <div className="search_and_display_jobs">
