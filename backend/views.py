@@ -47,7 +47,7 @@ class JobPostsView(views.APIView):
         FOLDER = os.path.join(PROJECT_ROOT, 'backend/')
         FILE = FOLDER + 'sample_data.json'
 
-        f = open(FILE)
+        f = open(FILE, encoding="utf8")
         response = json.load(f)
 
         if response['data']:

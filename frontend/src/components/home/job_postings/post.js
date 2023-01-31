@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PostPopUp from './post_pop_up';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+//import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Post({ post }) {
     const [PostPopUpShown, setPostPopUpShown] = useState(false);
@@ -32,7 +32,7 @@ export default function Post({ post }) {
             <p className='post-job-description'>{post.job_description}</p>
 
             <div className='location'>
-                <LocationOnIcon />
+                {/* <LocationOnIcon /> */}
                 <p>{post.job_city}, {post.job_state}, {post.job_country}</p>
             </div>
 
