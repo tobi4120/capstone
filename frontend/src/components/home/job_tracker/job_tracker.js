@@ -40,7 +40,7 @@ export default function JobTracker(props) {
     return (
         <div>
             Job Tracker for {user.first_name}
-            <table class="table table-hover">
+            <table class="table table-hover text-center">
                 <thead>
                     <tr>
                         <th scope="col">Logo</th>
