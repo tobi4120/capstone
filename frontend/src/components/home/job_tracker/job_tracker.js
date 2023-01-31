@@ -3,15 +3,20 @@ import { UserContext } from '../../../contexts';
 import { getJobsAppliedTo } from "../../../api/job_postings";
 import Loader from "../loader";
 import Table_row from './table_row';
+import { recivedInterview } from '../../../api/job_tracker';
 
 export default function JobTracker(props) {
     const user = useContext(UserContext);
     const [jobsAppledTo, setJobsAppliedTo] = useState([]);
+    const [jobsInterview, setjobsInterview] = useState([]);
+    const [jobsOffer, setjobsOffer] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
         loadData();
+        countInterviews();
+        countOffers();
     }, [])
 
     const loadData = async () => {
@@ -31,6 +36,22 @@ export default function JobTracker(props) {
         }
 
         setLoading(false);
+    }
+
+    const countInterviews = async () => {
+        const response = await getJobsAppliedTo()
+
+        const interviews = response.data.filter(x => x.receivedInterview === true)
+        console.log(interviews)
+        setjobsInterview(interviews)
+    }
+
+    const countOffers = async () => {
+        const response = await getJobsAppliedTo()
+
+        const offers = response.data.filter(x => x.receivedOffer === true)
+        console.log(offers)
+        setjobsOffer(offers)
     }
 
     if (loading) return <Loader />
@@ -66,9 +87,9 @@ export default function JobTracker(props) {
             <h4>&nbsp;&nbsp;&nbsp;</h4>
 
             <table class="table table-hover text-center">
-                <tr>Number of Job Applied To:</tr>
-                <tr>Interview Conversion Rate:</tr>
-                <tr>Offer Conversion Rate:</tr>
+                <tr>Number of Job Applied To: {jobsAppledTo.length}</tr>
+                <tr>Interview Conversion Rate: {jobsInterview.length} / {jobsAppledTo.length} = {Math.round((jobsInterview.length / jobsAppledTo.length) * 100)} %</tr>
+                <tr>Offer Conversion Rate: {jobsOffer.length} / {jobsInterview.length} = {Math.round((jobsOffer.length / jobsInterview.length) * 100)} %</tr>
             </table>
 
         </div>
