@@ -3,8 +3,6 @@ import PostPopUp from './post_pop_up';
 //import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function Post({ post }) {
-    const [PostPopUpShown, setPostPopUpShown] = useState(false);
-
     const addCommas = (num) => {
         if (!num) return;
 
@@ -20,7 +18,7 @@ export default function Post({ post }) {
     }
 
     return (
-        <div className='post' onClick={() => setPostPopUpShown(true)}>
+        <div className='post'>
             <div className='post-header'>
                 <img className='post-logo' src={post.employer_logo} />
                 <div className='post-title-name'>
@@ -39,7 +37,15 @@ export default function Post({ post }) {
             {post.job_min_salary && post.job_max_salary &&
                 <p className='salary'>${addCommas(post.job_min_salary)} - ${addCommas(post.job_max_salary)}</p>}
             
-            {PostPopUpShown && <PostPopUp post={post} />}
+            {/* Show popup */}
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#J${post.job_id.substring(0,post.job_id.length-2)}Modal`}>
+                Show more info
+            </button>
+            
+            {/* Popup */}
+            <div className="modal fade" id={`J${post.job_id.substring(0,post.job_id.length-2)}Modal`} tabIndex="-1" aria-labelledby={`J${post.job_id.substring(0,post.job_id.length-2)}ModalLabel`} aria-hidden="true">
+                <PostPopUp post={post} />
+            </div>
         </div>
     )
 }

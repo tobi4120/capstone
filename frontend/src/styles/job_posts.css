@@ -95,4 +95,51 @@
 
 .keyphrase {
     background-color: yellow;
+    display: inline;
+}
+
+/* Modal */
+.modal-dialog {
+    max-width: 50% !important;
+    height: 80vh !important;
+}
+
+.modal-content {
+    height: 100%;
+}
+
+.modal-header {
+    align-items: flex-start;
+}
+
+.modal-body {
+    height: 100%;
+    overflow: scroll;
+}
+
+.modal-sub-header {
+    display: flex;
+    align-items: center;
+}
+
+.middle-dot {
+    margin: 0px 5px;
+}
+
+.modal-body-header {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.modal-body-desc {
+    margin-bottom: 15px;
+}
+
+.modal-text {
+    font-size: 0.9rem;
+}
+
+.modal-emplouer-logo {
+    width: 80px;
+    margin-right: 15px;
 }
