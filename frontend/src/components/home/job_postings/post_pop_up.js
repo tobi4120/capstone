@@ -31,6 +31,7 @@ export default function PostPopUp({ post }) {
         if (monthDiff > 0) return `${monthDiff} month${monthDiff > 1? "s": ""} ago`
         if (weekDiff > 0) return `${weekDiff} week${weekDiff > 1? "s": ""} ago`
         if (dayDiff > 0) return `${dayDiff} day${dayDiff > 1? "s": ""} ago`
+        if (dayDiff === 0) return "Today"
     }
 
     const findKeyWords = () => {
