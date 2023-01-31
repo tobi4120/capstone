@@ -11,7 +11,7 @@ const SearchBar = (props) => {
         <form className="search-job" onSubmit={handleSubmit}>
             <input 
                 type="text" 
-                placeholder="Search by title, company or any jobs keyword..."
+                placeholder="Search for a job (ex. software developer in chicago or marketing manager in new york via linkedin)"
                 value={props.query}
                 onChange={(e) => props.setQuery(e.target.value)}
                 required
