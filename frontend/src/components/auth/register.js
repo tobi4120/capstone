@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { create_account, delete_token_fromDB } from "../../api/auth";
 import { useNavigate } from 'react-router-dom';
+import AuthNavbar from './auth_navbar';
 
 export default function Regiser() {
     const [formData, setFormData] = useState({
@@ -52,46 +53,54 @@ export default function Regiser() {
 
     return (
         <div>
-            <h1>Register</h1>
-            <form onChange={handleChange} onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    name="firstName"
-                    placeholder="First name"
-                    value={formData.firstName}
-                    required />
+            <AuthNavbar />
+            <div className='auth'>
+                <h2>Register</h2>
+                <form onChange={handleChange} onSubmit={handleSubmit} className='auth-form'>
+                    <input 
+                        type="text"
+                        className='auth-input form-control' 
+                        name="firstName"
+                        placeholder="First name"
+                        value={formData.firstName}
+                        required />
 
-                <input 
-                    type="text" 
-                    name="lastName"
-                    placeholder="Last name"
-                    value={formData.lastName}
-                    required />      
-                        
-                <input 
-                    type="email" 
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    required />
+                    <input 
+                        type="text" 
+                        className='auth-input form-control'
+                        name="lastName"
+                        placeholder="Last name"
+                        value={formData.lastName}
+                        required />      
+                            
+                    <input 
+                        type="email" 
+                        className='auth-input form-control'
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        required />
 
-                <input 
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    required />
+                    <input 
+                        type="password"
+                        className='auth-input form-control'
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        required />
 
-                <input 
-                    type="password"
-                    name="passwordConfirm"
-                    placeholder="Confirm password"
-                    value={formData.passwordConfirm}
-                    required />
+                    <input 
+                        type="password"
+                        className='auth-input form-control'
+                        name="passwordConfirm"
+                        placeholder="Confirm password"
+                        value={formData.passwordConfirm}
+                        required />
 
-                <input type="submit" value="Register" />
-            </form>
-            <p>Already have an account? <a href="/login">Log in</a></p>
+                    <input className='btn btn-primary' type="submit" value="Register" />
+                </form>
+                <p>Already have an account? <a href="/login">Log in</a></p>
+            </div>
         </div>
     )
 }

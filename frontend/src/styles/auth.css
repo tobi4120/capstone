@@ -1,0 +1,22 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-top: 30px;
+}
+
+.auth-input {
+    display: block;
+    width: 60%;
+    margin: auto;
+}
+
+.auth-input:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.auth-form {
+    text-align: center;
+    width: 100%;
+}

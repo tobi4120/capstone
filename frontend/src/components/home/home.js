@@ -5,7 +5,7 @@ import Loader from './loader';
 import { Outlet } from 'react-router-dom';
 import { UserContext } from '../../contexts';
 import "../../styles/home.css";
-import Navbar from './job_postings/navbar';
+import Navbar from './navbar';
 
 export default function Home() {
     const [user, setUser] = useState();

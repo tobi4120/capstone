@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { verify_login, delete_token_fromDB } from "../../api/auth";
 import { useNavigate } from 'react-router-dom';
+import AuthNavbar from './auth_navbar';
+import "../../styles/auth.css";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -37,25 +39,30 @@ export default function Login() {
 
     return (
         <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="email" 
-                    placeholder="Email"
-                    onChange={e => setEmail(e.target.value)}
-                    value={email}
-                    required />
+            <AuthNavbar />
+            <div className='auth'>
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit} className='auth-form'>
+                    <input 
+                        type="email" 
+                        className='auth-input form-control'
+                        placeholder="Email"
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
+                        required />
 
-                <input 
-                    type="password" 
-                    placeholder="Password"
-                    onChange={e => setPassword(e.target.value)}
-                    value={password}
-                    required />
+                    <input 
+                        type="password" 
+                        className='auth-input form-control'
+                        placeholder="Password"
+                        onChange={e => setPassword(e.target.value)}
+                        value={password}
+                        required />
 
-                <input type="submit" value="Login" />
-            </form>
-            <p>Don't have an account? <a href="/register">Register</a></p>
+                    <input className="btn btn-primary" type="submit" value="Login" />
+                </form>
+                <p>Don't have an account? <a href="/register">Register</a></p>
+            </div>
         </div>
     )
 }
