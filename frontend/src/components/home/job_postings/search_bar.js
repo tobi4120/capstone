@@ -19,7 +19,7 @@ const SearchBar = (props) => {
             <input 
                 type="submit"
                 value="Find"
-                class="btn btn-primary" />
+                className="btn btn-primary" />
         </form>
     )
 }

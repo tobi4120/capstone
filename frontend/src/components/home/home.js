@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { verify_token, delete_token_fromDB } from '../../api/auth';
+import { verify_token } from '../../api/auth';
 import Loader from './loader';
 import { Outlet } from 'react-router-dom';
 import { UserContext } from '../../contexts';
 import "../../styles/home.css";
+import Navbar from './job_postings/navbar';
 
 export default function Home() {
     const [user, setUser] = useState();
@@ -32,19 +33,14 @@ export default function Home() {
         }
     }
 
-    const logout = async () => {
-        delete_token_fromDB();
-        localStorage.removeItem('token');
-        navigate("/login"); 
-    }
-
     if (loading) return <Loader />
 
     return (
-        <UserContext.Provider value={user}>
-            Welcome, {user.first_name}
-            <button onClick={logout}>Logout</button>
-            <Outlet />
-        </UserContext.Provider>
+        <div className='home'>
+            <UserContext.Provider value={user}>
+                <Navbar />
+                <Outlet />
+            </UserContext.Provider>
+        </div>
     )
 }

@@ -3,7 +3,7 @@
     padding: 25px 80px;
     gap: 50px;
     overflow: hidden;
-    height: 95%;
+    flex: 1;
 }
 
 #root {
