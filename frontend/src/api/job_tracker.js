@@ -31,3 +31,18 @@ export const recievedOffer = async (post, checkedOffer) => {
     
     return response;
 }
+
+export const deleteJob = async (post) => {
+    
+    let response = "";
+
+    try {
+        response = await axios.delete(`${backend_url}/jobs-applied-to/${post.id}/`, {
+            
+        });
+    } catch (err) {
+        response = err.response
+    }
+    
+    return response;
+}

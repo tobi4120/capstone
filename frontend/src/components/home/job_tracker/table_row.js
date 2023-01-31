@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, Checkbox } from 'react';
-import {recivedInterview, recievedOffer} from '../../../api/job_tracker';
+import {recivedInterview, recievedOffer, deleteJob} from '../../../api/job_tracker';
 
 const Table_row = ({job}) => {
     const [interview, setInterview] = React.useState(job.receivedInterview);
@@ -14,6 +14,12 @@ const Table_row = ({job}) => {
     const handleChangeOffer = async () => {
         setOffer(!offer);
         const responseOffer = await recievedOffer(job, offer)
+        console.log(responseOffer)
+    }
+
+    const onClickDelete = async () => {
+        const responseOffer = await deleteJob(job)
+        window.location.reload(false);
         console.log(responseOffer)
     }
 
@@ -44,7 +50,7 @@ const Table_row = ({job}) => {
                 </td>
 
                 <td class="align-middle">
-                    <button type="button" class="btn btn-dark">Remove</button>
+                    <button type="button" class="btn btn-dark" onClick={onClickDelete}>Remove</button>
                 </td>
             </tr>
         </tbody>
