@@ -19,6 +19,9 @@ class JobPostsView(views.APIView):
     def get(self, request):
         # API docs: https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
 
+        # Used to toggle between API and dummy data
+        production = True
+
         # Get params
         params = {
             'query': self.request.query_params.get('query'),
@@ -38,17 +41,18 @@ class JobPostsView(views.APIView):
             "X-RapidAPI-Host": "jsearch.p.rapidapi.com"
         }
 
-        # response = requests.request("GET", url, headers=headers, params=params)
-        # response = response.json()
+        if production:
+            response = requests.request("GET", url, headers=headers, params=params)
+            response = response.json()
+        else:
+            # Loading data from dummy file
+            settings_dir = os.path.dirname(__file__)
+            PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+            FOLDER = os.path.join(PROJECT_ROOT, 'backend/')
+            FILE = FOLDER + 'sample_data.json'
 
-        # Loading data from dummy file (need to remove later)
-        settings_dir = os.path.dirname(__file__)
-        PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
-        FOLDER = os.path.join(PROJECT_ROOT, 'backend/')
-        FILE = FOLDER + 'sample_data.json'
-
-        f = open(FILE, encoding="utf8")
-        response = json.load(f)
+            f = open(FILE, encoding="utf8")
+            response = json.load(f)
 
         if response['data']:
             data = response['data']

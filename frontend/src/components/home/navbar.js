@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { UserContext } from '../../../contexts';
-import { delete_token_fromDB } from "../../../api/auth";
+import { UserContext } from '../../contexts';
+import { delete_token_fromDB } from "../../api/auth";
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {

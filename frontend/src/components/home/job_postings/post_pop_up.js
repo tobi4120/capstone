@@ -36,6 +36,8 @@ export default function PostPopUp({ post }) {
     const findKeyWords = () => {
         let job_description = post.job_description;
 
+        if (!post.job_highlights.Qualifications) return;
+
         for (const keyphrase of post.job_highlights.Qualifications) {
             const start = job_description.indexOf(keyphrase);
             const end = start + keyphrase.length;
