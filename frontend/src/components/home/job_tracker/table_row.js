@@ -11,39 +11,44 @@ const Table_row = ({job}) => {
         console.log(responseInterview)
       };
 
-    const hangleChangeOffer = async () => {
+    const handleChangeOffer = async () => {
         setOffer(!offer);
         const responseOffer = await recievedOffer(job, offer)
         console.log(responseOffer)
     }
 
     return(
-        <tr key={job.job_id}>
-            <td><img src={job.employer_logo} style={{"maxWidth":100}}></img></td>
-            <td>{job.employer_name}</td>
-            <td>{job.job_title}</td>
-            <td>{job.job_city}</td>
-            <td>{job.job_publisher}</td>
-            <td>
-            <label>
-                <input type="checkbox" checked={interview} onChange={handleChangeInterview}/>
-                Interview Recieved
-            </label>
+        <tbody>
+            <tr key={job.job_id}>
+                <td scope="row"><img src={job.employer_logo} style={{"maxWidth":100}}></img></td>
+                <td>{job.employer_name}</td>
+                <td>{job.job_title}</td>
+                <td>{job.job_city}</td>
+                <td>{job.job_publisher}</td>
+                <td>
+                    <label>
+                        <input type="checkbox" checked={interview} onChange={handleChangeInterview}/>
+                        Interview Recieved
+                    </label>
 
-            {/* <p>Is "Interview" checked? {interview.toString()}</p> */}
-            </td>
+                    {/* <p>Is "Interview" checked? {interview.toString()}</p> */}
+                </td>
 
-            <td>
-            <label>
-                <input type="checkbox" checked={offer} onChange={hangleChangeOffer}/>
-                Offer Recieved
-            </label>
+                <td>
+                    <label>
+                        <input type="checkbox" checked={offer} onChange={handleChangeOffer}/>
+                        Offer Recieved
+                    </label>
 
-            {/* <p>Is "Offer" checked? {offer.toString()}</p> */}
-            </td>
-        </tr>
+                    {/* <p>Is "Offer" checked? {offer.toString()}</p> */}
+                </td>
+
+                <td>
+                    <button>Remove</button>
+                </td>
+            </tr>
+        </tbody>
     )
-        
 }
 
 export default Table_row;
