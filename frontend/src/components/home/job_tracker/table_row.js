@@ -32,8 +32,8 @@ const Table_row = ({job}) => {
                 <td class="align-middle">{job.job_city}</td>
                 <td class="align-middle">{job.job_publisher}</td>
                 <td class="align-middle">
-                    <label>
-                        <input type="checkbox" checked={interview} onChange={handleChangeInterview}/>
+                    <label className="form-check-label">
+                        <input type="checkbox" checked={interview} onChange={handleChangeInterview} className="form-checkbox-input form-check-input"/>
                         Interview Recieved
                     </label>
 
@@ -41,8 +41,8 @@ const Table_row = ({job}) => {
                 </td>
 
                 <td class="align-middle">
-                    <label>
-                        <input type="checkbox" checked={offer} onChange={handleChangeOffer}/>
+                    <label className="form-check-label">
+                        <input type="checkbox" checked={offer} onChange={handleChangeOffer} className="form-checkbox-input form-check-input"/>
                         Offer Recieved
                     </label>
 
