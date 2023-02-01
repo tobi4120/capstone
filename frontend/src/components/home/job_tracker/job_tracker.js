@@ -60,6 +60,8 @@ export default function JobTracker(props) {
 
     return (
         <div>
+            <h8>&nbsp;&nbsp;&nbsp;</h8>
+
             <h3>&nbsp;&nbsp;Job Tracker for {user.first_name}</h3>
 
             <table class="table table-hover text-center">
@@ -82,6 +84,8 @@ export default function JobTracker(props) {
                     )
                 })}
             </table>
+            
+            <h8>&nbsp;&nbsp;&nbsp;</h8>
 
             <h3>&nbsp;&nbsp;Job Search Statistics for {user.first_name}</h3>
             <h4>&nbsp;&nbsp;&nbsp;</h4>
