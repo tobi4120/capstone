@@ -3,7 +3,6 @@ import { UserContext } from '../../../contexts';
 import { getJobsAppliedTo } from "../../../api/job_postings";
 import Loader from "../loader";
 import Table_row from './table_row';
-import { recivedInterview } from '../../../api/job_tracker';
 
 export default function JobTracker(props) {
     const user = useContext(UserContext);
