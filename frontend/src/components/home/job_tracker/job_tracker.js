@@ -41,7 +41,8 @@ export default function JobTracker(props) {
     const countInterviews = async () => {
         const response = await getJobsAppliedTo()
 
-        const interviews = response.data.filter(x => x.receivedInterview === true)
+        const data = response.data.filter(x => x.user === user.id)
+        const interviews = data.filter(x => x.receivedInterview === true)
         console.log(interviews)
         setjobsInterview(interviews)
     }
@@ -49,9 +50,28 @@ export default function JobTracker(props) {
     const countOffers = async () => {
         const response = await getJobsAppliedTo()
 
-        const offers = response.data.filter(x => x.receivedOffer === true)
+        const data = response.data.filter(x => x.user === user.id)
+        const offers = data.filter(x => x.receivedOffer === true)
         console.log(offers)
         setjobsOffer(offers)
+    }
+
+    const updateInterviews = async (target) => {
+        const index = jobsAppledTo.findIndex(x => x.id === parseInt(target.value))
+        if (target.checked) {
+            setjobsInterview([...jobsInterview, jobsAppledTo[index]])
+        } else {
+            setjobsInterview(jobsInterview.filter(x => x.id !== parseInt(target.value)))
+        }
+    }
+
+    const updateOffers = async (target) => {
+        const index = jobsAppledTo.findIndex(x => x.id === parseInt(target.value))
+        if (target.checked) {
+            setjobsOffer([...jobsOffer, jobsAppledTo[index]])
+        } else {
+            setjobsOffer(jobsOffer.filter(x => x.id !== parseInt(target.value)))
+        }
     }
 
     if (loading) return <Loader />
@@ -80,7 +100,7 @@ export default function JobTracker(props) {
 
                 {jobsAppledTo.map(job => {
                     return (
-                        <Table_row job={job}/>
+                        <Table_row job={job} updateInterviews={updateInterviews} updateOffers={updateOffers}/>
                     )
                 })}
             </table>

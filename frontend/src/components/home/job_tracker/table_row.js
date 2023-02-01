@@ -1,20 +1,24 @@
 import React, { useContext, useEffect, useState, Checkbox } from 'react';
 import {recivedInterview, recievedOffer, deleteJob} from '../../../api/job_tracker';
 
-const Table_row = ({job}) => {
+const Table_row = ({job, updateInterviews, updateOffers}) => {
     const [interview, setInterview] = React.useState(job.receivedInterview);
     const [offer, setOffer] = React.useState(job.receivedOffer);
 
-    const handleChangeInterview = async () => {
+    const handleChangeInterview = async (e) => {
         setInterview(!interview);
         const responseInterview = await recivedInterview(job, interview)
         console.log(responseInterview)
+
+        updateInterviews(e.target)
       };
 
-    const handleChangeOffer = async () => {
+    const handleChangeOffer = async (e) => {
         setOffer(!offer);
         const responseOffer = await recievedOffer(job, offer)
         console.log(responseOffer)
+
+        updateOffers(e.target)
     }
 
     const onClickDelete = async () => {
@@ -33,7 +37,7 @@ const Table_row = ({job}) => {
                 <td class="align-middle">{job.job_publisher}</td>
                 <td class="align-middle">
                     <label className="form-check-label">
-                        <input type="checkbox" checked={interview} onChange={handleChangeInterview} className="form-checkbox-input form-check-input"/>
+                        <input type="checkbox" value={job.id} checked={interview} onChange={handleChangeInterview} className="form-checkbox-input form-check-input"/>
                         Interview Recieved
                     </label>
 
@@ -42,7 +46,7 @@ const Table_row = ({job}) => {
 
                 <td class="align-middle">
                     <label className="form-check-label">
-                        <input type="checkbox" checked={offer} onChange={handleChangeOffer} className="form-checkbox-input form-check-input"/>
+                        <input type="checkbox" value={job.id} checked={offer} onChange={handleChangeOffer} className="form-checkbox-input form-check-input"/>
                         Offer Recieved
                     </label>
 
