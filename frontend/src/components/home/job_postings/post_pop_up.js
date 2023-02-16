@@ -115,7 +115,7 @@ export default function PostPopUp({ post }) {
                             <h4 className='modal-body-header'>Additonal info</h4>
                             <ul>
                                 <li className='modal-text'>Employment type: {post.job_employment_type}</li>
-                                {post.job_is_remote && <l1>Remote</l1>}
+                                {post.job_is_remote && <li>Remote</li>}
                                 <li className='modal-text'>Source: {post.job_publisher}</li>
                             </ul>
                         </div>
