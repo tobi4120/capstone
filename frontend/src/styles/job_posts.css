@@ -11,14 +11,6 @@
     overflow: hidden;
 }
 
-.filter {
-    flex: 0 0 27%;
-
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
 .search_and_display_jobs {
     flex: 1;
     height: 100%;
@@ -26,18 +18,6 @@
 
     display: flex;
     flex-direction: column;
-}
-
-.filter-content, .posts, .search-job {
-    background-color: white;
-    border-radius: 7px;
-    border: 1px solid rgb(231,231,231);
-    padding: 20px;
-}
-
-.filter-content {
-    overflow: scroll;
-    flex: 1;
 }
 
 .posts {

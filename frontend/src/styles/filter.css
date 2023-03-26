@@ -1,3 +1,25 @@
+.filter {
+    flex: 0 0 27%;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+
+.filter-content, .posts, .search-job {
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid rgb(231,231,231);
+    padding: 20px;
+}
+
+.filter-content {
+    overflow: scroll;
+    flex: 1;
+    margin-bottom: 30px;
+}
+
 .filter-header {
     font-size: 1.5rem;
 }
@@ -17,5 +39,9 @@
 }
 
 .btn-filter {
-    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0px 0px 7px 7px;
 }
