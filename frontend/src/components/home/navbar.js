@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../contexts';
 import { delete_token_fromDB } from "../../api/auth";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 export default function Navbar() {
     const user = useContext(UserContext);
@@ -28,10 +28,10 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className={`nav-link ${location.pathname === "/job-postings"? "active" : ""}`} aria-current="page" href="/job-postings">Job Postings</a>
+                            <Link className={`nav-link ${location.pathname === "/job-postings"? "active" : ""}`} aria-current="page" to="/job-postings">Job Postings</Link>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${location.pathname === "/job-tracker"? "active" : ""}`} href="/job-tracker">Job Tracker</a>
+                            <Link className={`nav-link ${location.pathname === "/job-tracker"? "active" : ""}`} to="/job-tracker">Job Tracker</Link>
                         </li>
                     </ul>
                     <div className="d-flex">

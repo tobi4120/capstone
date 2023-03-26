@@ -79,7 +79,7 @@ export default function JobTracker(props) {
 
     return (
         <div>
-            <h8>&nbsp;&nbsp;&nbsp;</h8>
+            <p>&nbsp;&nbsp;&nbsp;</p>
 
             <h3>&nbsp;&nbsp;Job Tracker for {user.first_name}</h3>
 
@@ -104,7 +104,7 @@ export default function JobTracker(props) {
                 })}
             </table>
             
-            <h8>&nbsp;&nbsp;&nbsp;</h8>
+            <p>&nbsp;&nbsp;&nbsp;</p>
 
             <h3>&nbsp;&nbsp;Job Search Statistics for {user.first_name}</h3>
             <h4>&nbsp;&nbsp;&nbsp;</h4>

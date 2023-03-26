@@ -20,7 +20,7 @@ class JobPostsView(views.APIView):
         # API docs: https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
 
         # Used to toggle between API and dummy data
-        production = True
+        production = False
 
         # Get params
         params = {

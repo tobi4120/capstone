@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { verify_token } from '../../api/auth';
 import Loader from './loader';
-import { Outlet } from 'react-router-dom';
 import { UserContext } from '../../contexts';
 import "../../styles/home.css";
 import Navbar from './navbar';
+import JobPostings from './job_postings';
+import JobTracker from './job_tracker/job_tracker';
 
 export default function Home() {
     const [user, setUser] = useState();
     const [loading, setLoading] = useState(true);
+    const [showJobPostings, setShowJobPostings] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -18,7 +20,11 @@ export default function Home() {
         
         if (location.pathname === "/")
             navigate("/job-postings"); 
-    }, [])
+        else if (location.pathname === "/job-postings") 
+            setShowJobPostings(true)
+        else if (location.pathname === "/job-tracker")
+            setShowJobPostings(false)
+    }, [location])
 
     const loadUserData = async () => {
         // Check token in local storage
@@ -39,7 +45,15 @@ export default function Home() {
         <div className='home'>
             <UserContext.Provider value={user}>
                 <Navbar />
-                <Outlet />
+
+                <div style={{ overflow: "hidden", display: showJobPostings? "flex": "none" }}>
+                    <JobPostings />
+                </div>
+
+                <div style={{ display: showJobPostings? "none": "block" }}>
+                    <JobTracker />
+                </div>
+
             </UserContext.Provider>
         </div>
     )
