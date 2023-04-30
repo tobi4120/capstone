@@ -42,7 +42,11 @@ export default function DisplayPosts(props) {
         <div className='posts'>
             <div className='posts-data'>
                 {jobPosts.map(post => {
-                    return <Post key={post.job_id} post={post} />
+                    return <Post 
+                                key={post.job_id}
+                                post={post}
+                                jobsRecentlyAppliedTo={props.jobsRecentlyAppliedTo}
+                                setjobsRecentlyAppliedTo={props.setjobsRecentlyAppliedTo} />
                 })}
             </div>
         </div>

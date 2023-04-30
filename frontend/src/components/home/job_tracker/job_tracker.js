@@ -11,12 +11,13 @@ export default function JobTracker(props) {
     const [jobsOffer, setjobsOffer] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [refresh, setRefresh] = useState(true);
 
     useEffect(() => {
         loadData();
         countInterviews();
         countOffers();
-    }, [])
+    }, [props.jobsRecentlyAppliedTo, refresh])
 
     const loadData = async () => {
         const response = await getJobsAppliedTo();
@@ -99,7 +100,12 @@ export default function JobTracker(props) {
 
                 {jobsAppledTo.map(job => {
                     return (
-                        <Table_row job={job} updateInterviews={updateInterviews} updateOffers={updateOffers}/>
+                        <Table_row 
+                            job={job} 
+                            updateInterviews={updateInterviews} 
+                            updateOffers={updateOffers}
+                            refresh={refresh}
+                            setRefresh={setRefresh}/>
                     )
                 })}
             </table>

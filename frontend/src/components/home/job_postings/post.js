@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PostPopUp from './post_pop_up';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-export default function Post({ post }) {
+export default function Post({ post, jobsRecentlyAppliedTo, setjobsRecentlyAppliedTo }) {
     const addCommas = (num) => {
         if (!num) return;
 
@@ -53,7 +53,10 @@ export default function Post({ post }) {
             
             {/* Popup */}
             <div className="modal fade" id={`J${post.job_id.substring(0,post.job_id.length-2)}Modal`} tabIndex="-1" aria-labelledby={`J${post.job_id.substring(0,post.job_id.length-2)}ModalLabel`} aria-hidden="true">
-                <PostPopUp post={post} />
+                <PostPopUp 
+                    post={post}
+                    jobsRecentlyAppliedTo={jobsRecentlyAppliedTo}
+                    setjobsRecentlyAppliedTo={setjobsRecentlyAppliedTo} />
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ import Filter from "./filter";
 const JobPostings = (props) => {
     const [filters, setFilters] = useState({
         datePosted: "all",
+        location: "",
         remoteJobsOnly: false,
         employmentType: [],
         jobRequirements: [],
@@ -17,7 +18,7 @@ const JobPostings = (props) => {
     const [searchForJob, setSearchForJob] = useState(false);
 
     const handleFilterChange = (e) => {
-        if (e.target.name === "datePosted" || e.target.name === "remoteJobsOnly") {
+        if (e.target.name === "datePosted" || e.target.name === "remoteJobsOnly" || e.target.name === "location") {
             setFilters({ ...filters, [e.target.name]: e.target.value })
             return
         }
@@ -51,7 +52,9 @@ const JobPostings = (props) => {
                     query={query}
                     filters={filters}
                     searchForJob={searchForJob}
-                    setSearchForJob={setSearchForJob} />
+                    setSearchForJob={setSearchForJob}
+                    jobsRecentlyAppliedTo={props.jobsRecentlyAppliedTo}
+                    setjobsRecentlyAppliedTo={props.setjobsRecentlyAppliedTo} />
             </div>
         </div>
     )

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from "../../../contexts";
 import { markJob } from "../../../api/job_postings";
 
-export default function PostPopUp({ post }) {
+export default function PostPopUp({ post, jobsRecentlyAppliedTo, setjobsRecentlyAppliedTo }) {
     const user = useContext(UserContext);
     const getEducation = (education_obj) => {
         if (education_obj.professional_certification) return "Professional Certification"
@@ -52,6 +52,7 @@ export default function PostPopUp({ post }) {
         const response = await markJob(post, user);
 
         if (response.status && response.status === 201) {
+            setjobsRecentlyAppliedTo([...jobsRecentlyAppliedTo, post])
             alert("Job successfully saved")
         } else if (response.data && response.data.job_id && response.data.job_id[0] === "jobs applied to with this job id already exists.") {
             alert("Error: Job has already been marked")

@@ -15,6 +15,8 @@ export default function Home() {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [jobsRecentlyAppliedTo, setjobsRecentlyAppliedTo] = useState([]);
+
     useEffect(() => {
         loadUserData();
         
@@ -47,11 +49,16 @@ export default function Home() {
                 <Navbar />
 
                 <div style={{ overflow: "hidden", display: showJobPostings? "flex": "none" }}>
-                    <JobPostings />
+                    <JobPostings
+                        jobsRecentlyAppliedTo={jobsRecentlyAppliedTo}
+                        setjobsRecentlyAppliedTo={setjobsRecentlyAppliedTo}
+                     />
                 </div>
 
                 <div style={{ display: showJobPostings? "none": "block" }}>
-                    <JobTracker />
+                    <JobTracker
+                        jobsRecentlyAppliedTo={jobsRecentlyAppliedTo}
+                     />
                 </div>
 
             </UserContext.Provider>

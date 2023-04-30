@@ -64,6 +64,10 @@ export default function Filter(props) {
                     Past month
                 </label>
 
+                {/* Location */}
+                {/* <h4 className='filter-sub-header'>Location</h4> 
+                <input type="text" name="location" /> */}
+
                 {/* Remote jobs only */}
                 <h4 className='filter-sub-header'>Remote</h4>
                 <label className="form-check-label">

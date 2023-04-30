@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, Checkbox } from 'react';
 import {recivedInterview, recievedOffer, deleteJob} from '../../../api/job_tracker';
 
-const Table_row = ({job, updateInterviews, updateOffers}) => {
+const Table_row = ({job, updateInterviews, updateOffers, refresh, setRefresh}) => {
     const [interview, setInterview] = React.useState(job.receivedInterview);
     const [offer, setOffer] = React.useState(job.receivedOffer);
 
@@ -23,7 +23,8 @@ const Table_row = ({job, updateInterviews, updateOffers}) => {
 
     const onClickDelete = async () => {
         const responseOffer = await deleteJob(job)
-        window.location.reload(false);
+        setRefresh(!refresh);
+        //window.location.reload(false);
         console.log(responseOffer)
     }
 
